@@ -15,4 +15,10 @@ export class ApiService {
   getProduct(){
     return  this.http.get<any>("https://62612d40f429c20deb9c1471.mockapi.io/inventory")
   }
+  putProduct(data:any , id : number){
+    return this.http.put<any>("https://62612d40f429c20deb9c1471.mockapi.io/inventory/" +id ,data)
+  }
+   deleteProduct(id:number){
+     return this.http.delete<any>("https://62612d40f429c20deb9c1471.mockapi.io/inventory/" +id)
+   }
 }

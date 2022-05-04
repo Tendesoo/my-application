@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { from, Observable } from 'rxjs';
 import { Item } from 'src/app/models/items';
@@ -25,13 +25,15 @@ export class DisplayInventoryComponent implements OnInit {
 
   readonly ROOT_URL = 'https://62612d40f429c20deb9c1471.mockapi.io/inventory'
 
-  displayedColumns: string[] = ['itemName', 'price'];
+  displayedColumns: string[] = ['itemName', 'price' , 'action'];
   dataSource !: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort !: MatSort;
 
-  constructor(private http: HttpClient ,private dialog:MatDialog ,  private api: ApiService ) {}
+  constructor(private http: HttpClient ,private dialog:MatDialog , 
+  
+     private api: ApiService ) {}
   openDialog(){
     this.dialog.open(DialogComponent,{
      width: '30%'
@@ -54,6 +56,12 @@ export class DisplayInventoryComponent implements OnInit {
       error:(err)=>{
         alert("Error while fetching the Records")
       }
+    })
+  }
+  editProduct(element:any){
+    this.dialog.open(DialogComponent,{
+      width:'30%' ,
+      data:element
     })
   }
   applyFilter(event: Event) {
