@@ -24,6 +24,9 @@
       <button mat-icon-button (click)="editProduct(element)" color="primary">
         <mat-icon>edit</mat-icon>
       </button>
+      <button (click)="deleteProduct(element.id)" mat-icon-button  color="warn">
+          <mat-icon>delete_outlined</mat-icon>
+        </button>
      
     </td>
   </ng-container>

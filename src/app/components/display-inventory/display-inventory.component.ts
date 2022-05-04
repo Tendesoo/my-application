@@ -32,12 +32,15 @@ export class DisplayInventoryComponent implements OnInit {
   @ViewChild(MatSort) sort !: MatSort;
 
   constructor(private http: HttpClient ,private dialog:MatDialog , 
-  
      private api: ApiService ) {}
   openDialog(){
     this.dialog.open(DialogComponent,{
      width: '30%'
-    });
+    }).afterClosed().subscribe(val =>{
+      if(val==='save'){
+        this.getAllProducts()
+      }
+     })
   }
 
   ngOnInit():void {
@@ -49,8 +52,6 @@ export class DisplayInventoryComponent implements OnInit {
     .subscribe({
       next:(res)=>{
         this.dataSource = res
-        // this.dataSource.paginator = this.paginator;
-        // this.dataSource.sort = this.sort;
         console.log(res)
       },
       error:(err)=>{
@@ -62,16 +63,23 @@ export class DisplayInventoryComponent implements OnInit {
     this.dialog.open(DialogComponent,{
       width:'30%' ,
       data:element
-    })
+    }).afterClosed().subscribe(val =>{
+      if(val==='update'){
+        this.getAllProducts()
+      }
+     })
   }
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
-}
+  deleteProduct(id:number){
+    this.api.deleteProduct(id).subscribe({
+      next:(res)=>{
+        alert("Product Deleted Successfully")
+        this.getAllProducts()
+      },
+      error:()=> {
+        alert("Error while deleting the product")
+      }
+    }) }}
+
 
 
 

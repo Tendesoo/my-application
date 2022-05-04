@@ -53,7 +53,11 @@ actionBtn: string ="Save";
       .subscribe({
         next:(res)=>{
           alert("Product updated successfully");
-          this.productForm.reset()
+          this.productForm.reset();
+          this.dialogRef.close('update');
+        },
+        error:()=>{
+          alert("Error while updating the record!!")
         }
       })
     }

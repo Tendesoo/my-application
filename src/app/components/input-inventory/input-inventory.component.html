@@ -23,26 +23,7 @@
      <br>
       <button type="submit" class="btn btn-warning" (click)="addItem()">Add</button>&nbsp;
       <button type="submit" class="btn btn-primary" (click)="reset()">Reset</button>
-      
     </form>
-    <br>
-    <div class="col-md-8 mt-4 mb-4">
-      <table class="table table-bordered">
-        <thead>
-          <th>Item</th>
-          <th>Price</th>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of listData">
-
-            <td><span>{{item.itemName}}</span></td>
-            <td><span>{{item.price}}</span></td>
-            <button type="submit" class="btn btn-danger">Remove</button>
-          </tr>
-         
-        </tbody>
-      </table>
-    </div>
   </div>
 </div>
 
