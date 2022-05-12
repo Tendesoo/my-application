@@ -42,7 +42,7 @@
        <table class="example-full-width" cellspacing="2">
         <tr>
             <td>
-       <mat-form-field class="example-full-width">
+       <mat-form-field class="example-full-width" >
         <input matInput placeholder="Username"  [(ngModel)]="this.username" name="username" required >
         <mat-error><mat-icon>error_outline</mat-icon>Your username is required</mat-error>
          </mat-form-field>
@@ -61,7 +61,7 @@
 </div>
 <footer>
   <p><a href="" title="Forgot Password">Forgot Password?</a></p>
-  <p><a href="" title="Register">Register</a></p>
+  <p><a href="" routerLink="/register" routerLinkActivate='activate'>Register</a></p>
 </footer>
     </section>
     </section>

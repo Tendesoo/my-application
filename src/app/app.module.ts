@@ -28,6 +28,7 @@ import { DisplayInventoryComponent } from './components/display-inventory/displa
 import { LoginComponent } from './components/login/login.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DialogComponent } from './components/dialog/dialog.component';
     DisplayInventoryComponent,
     LoginComponent,
     SidenavComponent,
-    DialogComponent
+    DialogComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,MatCardModule,FormsModule,MatInputModule,MatButtonModule,MatDialogModule,MatIconModule,
