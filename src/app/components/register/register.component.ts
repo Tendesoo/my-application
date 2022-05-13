@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup,FormControl,Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -6,16 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  password:any;
-  cnfrmPassword:any
 
-  constructor() { }
+ reactiveForm!:FormGroup;
+  constructor(private formBuilder:FormBuilder) { 
+
+    this.reactiveForm=this.formBuilder.group({
+      username:new FormControl('',Validators.compose([Validators.required,Validators.minLength(6)])),
+      email:new FormControl('',[Validators.required]),
+      password:new FormControl('',[Validators.required]),
+      cnfrmPassword:new FormControl('',[Validators.required])
+    })
+  }
+
+  get f (){return this.reactiveForm.controls}
+
+  onSubmit(){
+    if(this.reactiveForm.invalid){
+      return;
+    }
+  }
 
   ngOnInit(): void {
   }
-checkPassword(){
-this.password = this.password.value
-this.cnfrmPassword = this.cnfrmPassword.value
-console.log(this.cnfrmPassword,this.password)
-}
+
 }

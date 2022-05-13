@@ -27,12 +27,15 @@
       </g>
     </svg>
     </div>
-    <form >
+    <form (ngSubmit)="onSubmit()" [formGroup]="reactiveForm" >
         <h1> Thank you for Registering with us</h1>
         <mat-form-field appearance="outline">
             <mat-label>Username</mat-label>
-            <input formControlName="username" matInput placeholder="Username">
+            <input matInput  formControlName="username" placeholder="Username" >
             </mat-form-field>
+          <mat-error *ngIf="f['username'].getError('required')!=null" class="errormessage">Enter username</mat-error>
+           <mat-error *ngIf="f['username'].getError('minlength')!=null" 
+           class="errormessage">Username should be at least 6 letters</mat-error>
         <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
             <input  formControlName="email" type="email" matInput placeholder="Email">
@@ -46,7 +49,7 @@
             <input  formControlName="cnfrmPassword" type="password" matInput placeholder="Confirm Password">
             </mat-form-field>
             <div>
-            <button mat-raised-button (click)="checkPassword()">REGISTER</button>
+            <button mat-raised-button>REGISTER</button>
         </div>
     </form>
 
