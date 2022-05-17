@@ -29,6 +29,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PasswordStrengthMeterComponent } from './components/password-strength-meter/password-strength-meter.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { RegisterComponent } from './components/register/register.component';
     LoginComponent,
     SidenavComponent,
     DialogComponent,
-    RegisterComponent
+    RegisterComponent,
+    PasswordStrengthMeterComponent
   ],
   imports: [
     BrowserModule,MatCardModule,FormsModule,MatInputModule,MatButtonModule,MatDialogModule,MatIconModule,

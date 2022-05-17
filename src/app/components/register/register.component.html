@@ -29,25 +29,49 @@
     </div>
     <form (ngSubmit)="onSubmit()" [formGroup]="reactiveForm" >
         <h1> Thank you for Registering with us</h1>
+
+        <!-- username -->
         <mat-form-field appearance="outline">
             <mat-label>Username</mat-label>
             <input matInput  formControlName="username" placeholder="Username" >
             </mat-form-field>
-          <mat-error *ngIf="f['username'].getError('required')!=null" class="errormessage">Enter username</mat-error>
+          <mat-error  *ngIf="f['username'].getError('required')!=null" class="errormessage">
+            <mat-icon>error_outline</mat-icon>Username is required</mat-error>
            <mat-error *ngIf="f['username'].getError('minlength')!=null" 
            class="errormessage">Username should be at least 6 letters</mat-error>
+
+           <!-- email -->
         <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
             <input  formControlName="email" type="email" matInput placeholder="Email">
             </mat-form-field>
+            <mat-error *ngIf="f['password'].getError('required')!=null" class="errormessage">
+              <mat-icon>error_outline</mat-icon>Email is required</mat-error>
+            <mat-error *ngIf="f['email'].getError('email')!=null" class="errormessage">
+              <mat-icon>error_outline</mat-icon>Your email is invalid</mat-error>
+
+              <!-- PASSWORD -->
         <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
             <input  formControlName="password" type="password" matInput placeholder="Password">
             </mat-form-field>
+            <mat-error *ngIf="f['password'].getError('required')!=null" class="errormessage">
+              <mat-icon>error_outline</mat-icon>Password is required</mat-error>
+                <mat-error *ngIf="f['password'].getError('minlength')!=null" class="errormessage">
+                  <mat-icon>error_outline</mat-icon>Password should have 8-12 characters</mat-error>
+                  <mat-error *ngIf="f['password'].getError('maxlength')!=null" class="errormessage">
+                    <mat-icon>error_outline</mat-icon>Password should have 8-12 characters</mat-error>
+                    
+
+              <!-- Confirm password -->
         <mat-form-field appearance="outline">
             <mat-label>Confirm Password</mat-label>
             <input  formControlName="cnfrmPassword" type="password" matInput placeholder="Confirm Password">
             </mat-form-field>
+            <mat-error *ngIf="f['cnfrmPassword'].getError('required')!=null" class="errormessage">
+              <mat-icon>error_outline</mat-icon>Confirmation of password is required</mat-error>
+            <mat-error *ngIf="f['cnfrmPassword'].getError('Mustmatch')!=null" class="errormessage">
+              <mat-icon>error_outline</mat-icon>Password mismatched</mat-error>
             <div>
             <button mat-raised-button>REGISTER</button>
         </div>
